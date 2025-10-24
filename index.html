@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Фейм Лист</title>
+<link rel="stylesheet" href="css/styles.css?v=3.3">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <h1> Фейм Лист</h1>
+    <nav class="main-nav">
+      <a href="#">Главная</a>
+      <a href="#famelist" class="active">Фейм Лист</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section id="famelist" class="famelist-section">
+    <h2>Фейм Лист</h2>
+    <div class="controls">
+      <input id="searchBox" class="search-box" placeholder="Поиск по нику..." />
+      <div class="category-pages">
+        <button class="page-btn active" data-category="all">Все</button>
+        <button class="page-btn" data-category="media">1 - Медийки 📺</button>
+        <button class="page-btn" data-category="fame">2 - Фейм 🌟</button>
+        <button class="page-btn" data-category="mid">3 - Сред. фейм 📈</button>
+        <button class="page-btn" data-category="small">4 - Мал. фейм 📉</button>
+        <button class="page-btn" data-category="bomg">5 - Бомжи/Скам 💸</button>
+        <button class="page-btn" data-category="product">6 - Товары 🛒</button>
+        <button class="page-btn" data-category="admin">7 - Админы 👑</button>
+        <button class="page-btn" data-category="coder">8 - Кодеры 💻</button>
+      </div>
+      <button id="faqButton" class="faq-btn">FAQ 📋</button>
+      <a href="https://t.me/+I10bvYava88yYzIy" target="_blank" class="apply-btn">Подать заявку 📝</a>
+    </div>
+    <div id="famelistGrid" class="famelist-grid"></div>
+  </section>
+</main>
+
+<!-- Modal for details -->
+<div id="detailModal" class="modal" aria-hidden="true">
+  <div class="modal-content profile-modal">
+    <button id="closeModal" class="close-btn">✕</button>
+    <div class="profile-header">
+      <img id="detailImg" src="" alt="" class="profile-avatar" />
+      <h3 id="detailName"></h3>
+    </div>
+    <p id="detailInfo"></p>
+    <div id="detailBadge" class="profile-badge"></div>
+    <div id="detailSeller" class="profile-seller"></div>
+    <div id="detailPrices" class="profile-prices"></div>
+    <div class="profile-actions">
+      <div id="detailContacts" class="social-links"></div>
+      <button id="shareProfile" class="share-btn">Поделиться 🔗</button>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ Modal -->
+<div id="faqModal" class="modal" aria-hidden="true">
+  <div class="modal-content faq-modal">
+    <button id="closeFaq" class="close-btn">✕</button>
+    <h3>FAQ: Критерии для подачи заявки (по возрастанию) 📌</h3>
+    <p><strong>Малый фейм</strong><br>от 400 сабов, хоть какая то узнаваемость хотя бы в рамках форума и в других чатах</p>
+    <p><strong>Средний фейм</strong><br>от 1к сабов, контакт с феймом и неплохая узнаваемость</p>
+    <p><strong>Фейм</strong><br>от 5к сабов, нашумевшие проекты, хорошая узнаваемость и контакт с медийными личностями</p>
+    <p><strong>Медиа</strong><br>абсолютная узнаваемость в комьюнити</p>
+    <p>ПИСАТЬ В 3 ЛИЦЕ ЛУЧШЕ ЗАКИДЫВАТЬ В ИИ (ИСКУССТВЕННЫЙ ИНТЕЛЛЕКТ)</p>
+    <p><strong>⚠️ Важно:</strong><br>— Админка в каналах не учитывается (даже с правами co-owner).<br>— Засчитывается только статус владельца (owner).<br>— Удалённые проекты не принимаются в расчёт.</p>
+    <p>Критерии могут меняться со временем</p>
+  </div>
+</div>
+
+<script src="js/sync.js?v=3.3"></script>
+<script src="js/themes.js?v=3.3"></script>
+<script src="js/script.js?v=3.3"></script>
+</body>
+</html>
