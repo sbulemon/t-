@@ -3,13 +3,15 @@
   --card: #151515;
   --accent: #ff073a;
   --muted: #cfcfcf;
-  --primary-color: #ff073a; /* Основной акцент */
-  --primary-glow: rgba(255, 7, 58, 0.3);
+  --primary-color: #ff7518; /* Оранжевый Хэллоуин акцент для тыкв */
+  --primary-glow: rgba(255, 117, 24, 0.5); /* Glow для жуткого эффекта */
   --bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   --card-bg: #151515;
-  --neon-green: #39ff14; /* Зелёный неон как на фото */
-  --neon-orange: #ff6600; /* Оранжевый для категорий */
-  --neon-glow: rgba(57, 255, 20, 0.5); /* Glow для зелёного */
+  --neon-green: #39ff14;
+  --neon-orange: #ff6600;
+  --neon-glow: rgba(57, 255, 20, 0.5);
+  --halloween-purple: #4b0082; /* Фиолетовый для жуткого освещения */
+  --halloween-red: #8b0000; /* Тёмно-красный для крови/страха */
 }
 
 * {
@@ -29,18 +31,46 @@ body {
   image-rendering: pixelated; /* Улучшение качества для снега/иконок */
 }
 
-body::before {
+body.halloween-theme {
+  background: linear-gradient(135deg, #0a0a0a 0%, #4b0082 100%); /* Приглушённый фиолетовый свет */
+  box-shadow: inset 0 0 100px rgba(255, 117, 24, 0.2); /* Жуткий оранжевый glow */
+}
+
+body.halloween-theme::before {
   content: '';
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 20% 50%, rgba(255, 255, 0, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 255, 0, 0.02) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(255, 255, 0, 0.01) 0%, transparent 50%);
+  background: radial-gradient(circle at 20% 50%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(75, 0, 130, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(255, 117, 24, 0.1) 0%, transparent 50%);
   pointer-events: none;
   z-index: -1;
+  opacity: 0.8; /* Приглушённый свет */
+}
+
+/* Паутина на фоне */
+body.halloween-theme::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 0 L50 50 L100 0 M0 100 L50 50 L100 100 M0 50 L100 50 M50 0 L50 100" stroke="rgba(255,255,255,0.05)" stroke-width="0.5" fill="none"/></svg>');
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: -1;
+  animation: webGlow 5s ease-in-out infinite alternate;
+}
+
+@keyframes webGlow {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.5; }
 }
 
 .container {
@@ -1014,4 +1044,52 @@ select#snowSize {
   .profile-actions {
     flex-direction: column;
   }
+}
+
+/* Хэллоуин элементы */
+.halloween-bats {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.bat {
+  position: absolute;
+  font-size: 24px;
+  color: #8b0000;
+  animation: flyBat 10s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes flyBat {
+  0% { transform: translateX(-100vw) rotate(0deg); }
+  100% { transform: translateX(100vw) rotate(360deg); }
+}
+
+.halloween-pumpkins {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: -1;
+  display: flex;
+  justify-content: space-around;
+}
+
+.pumpkin {
+  font-size: 48px;
+  color: #ff7518;
+  text-shadow: 0 0 10px rgba(255, 117, 24, 0.8);
+  animation: pumpkinGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pumpkinGlow {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.1); opacity: 1; }
 }
