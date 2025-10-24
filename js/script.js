@@ -202,6 +202,12 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   
   // Показываем уведомление о локальном режиме
   checkLocalMode();
+
+  // Halloween эффекты
+  spawnBats();
+  spawnPumpkins();
+  spawnSpiders();
+  spawnGhosts();
 });
 
 /**
@@ -285,4 +291,56 @@ function checkLocalMode() {
       }
     }, 10000);
   }
+}
+
+/* Halloween Functions */
+function spawnBats() {
+  const batsContainer = document.getElementById('halloweenBats');
+  setInterval(() => {
+    const bat = document.createElement('div');
+    bat.className = 'bat';
+    bat.textContent = '🦇';
+    bat.style.left = Math.random() * 100 + '%';
+    bat.style.animationDelay = Math.random() * 5 + 's';
+    batsContainer.appendChild(bat);
+    setTimeout(() => bat.remove(), 10000);
+  }, 2000);
+}
+
+function spawnPumpkins() {
+  const pumpkinsContainer = document.getElementById('halloweenPumpkins');
+  for (let i = 0; i < 5; i++) {
+    const pumpkin = document.createElement('div');
+    pumpkin.className = 'pumpkin';
+    pumpkin.textContent = '🎃';
+    pumpkin.style.animationDelay = Math.random() * 2 + 's';
+    pumpkinsContainer.appendChild(pumpkin);
+  }
+}
+
+function spawnSpiders() {
+  const spidersContainer = document.getElementById('halloweenSpiders');
+  setInterval(() => {
+    const spider = document.createElement('div');
+    spider.className = 'spider';
+    spider.textContent = '🕷️';
+    spider.style.left = Math.random() * 100 + '%';
+    spider.style.animationDuration = (Math.random() * 2 + 2) + 's';
+    spidersContainer.appendChild(spider);
+    setTimeout(() => spider.remove(), 5000);
+  }, Math.random() * 5000 + 3000); /* Рандомный интервал для jump scare */
+}
+
+function spawnGhosts() {
+  const ghostsContainer = document.getElementById('halloweenGhosts');
+  setInterval(() => {
+    const ghost = document.createElement('div');
+    ghost.className = 'ghost';
+    ghost.textContent = '👻';
+    ghost.style.left = Math.random() * 100 + '%';
+    ghost.style.top = Math.random() * 100 + '%';
+    ghost.style.animationDelay = Math.random() * 3 + 's';
+    ghostsContainer.appendChild(ghost);
+    setTimeout(() => ghost.remove(), 10000);
+  }, Math.random() * 7000 + 5000); /* Рандомные появления */
 }
